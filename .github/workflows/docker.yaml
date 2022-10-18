@@ -11,20 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-	
-  # Adding environment variables
     - name: docker login
       env:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}   
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
-      run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-
-  # Automate function 1 : Docker build command  
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+# Automate function 1 : Docker build command  
     - name: docker build python
       run: |
         docker build -t bonny2512/hello-world-action
-  # Automate function 2 : Docker push command    
+# Automate function 2 : Docker push command    
     - name: docker push
       run: |
         docker push bonny2512/hello-world-action:latest
