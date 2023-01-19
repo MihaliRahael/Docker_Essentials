@@ -48,7 +48,7 @@ Whenever we need to share the whole config setup, we will share image not contai
 
 Virtual machines can also achieve environment standardization. Then what upper hand does docker have? Consider a web server, which typically contains a CPU, RAM, HDD and n/w components. Suppose we create 3 VMs on top of this server. Each VM will be allocated the resources from the web server in a shared manner. Suppose VM1 is not working or hardly used and VM2 and 3 are heavily used. In that scenario the 2 machines cannot take the resources from VM1. Each VMs can use only the respective allocated resources. This is the major disadv of using VMs.
 
-![](media/0913d83ab887c7952324bd9b209ffd05.png)
+![image](https://user-images.githubusercontent.com/106816732/213420220-d4b71b04-59ce-4150-823a-c0b3ab5c0c94.png)
 
 Docker virtualizes only the application layer. It doesn’t have its own OS kernel, instead it uses host’s OS kernel to interact with its hardware. Whereas in VM it virtualizes application layer and OS kernel. Therefore while creating VM , we need to allocate RAM and HDD whereas in docker its not needed (it uses host’s RAM)
 
@@ -121,11 +121,11 @@ docker run ubuntu sleep 120 - run the ubuntu image for 2 mins then shutdown
 
 docker pull docker/getting-started
 
-![](media/339337a97271e4ccf99afa9f6e91d2ff.png)
+![image](https://user-images.githubusercontent.com/106816732/213420303-bfc943f9-72ff-4f5b-999a-6b8669610a5b.png)
 
 Note : we can see the sublayers inside an image getting pulled. Refer layers architecture od docker explained earlier.
 
-![](media/463a6ecf64a3a55439197e90d01b0acb.png)
+![image](https://user-images.githubusercontent.com/106816732/213420329-156c60ed-79ce-4d2a-a136-99f2e1330a37.png)
 
 -   **Run the package/artifact/image**
 
@@ -233,44 +233,43 @@ Note that this host port should be mentioned in flask app designed by Bonny.
 
 Suppose in a particular application we want to make something dynamic which need to be passed during runtime. Eg: user credentials. Consider the below code. Created app.py, build and run the image. Variables are static.
 
-![](media/217df01bec2b2090fee0fd9a65d58d62.png)
+![image](https://user-images.githubusercontent.com/106816732/213420496-50d7d742-5d53-4fed-8d89-910495ff79ec.png)
 
-![](media/5418844497bc91014c54abad19121250.png)
+![image](https://user-images.githubusercontent.com/106816732/213420475-b20cac32-029b-4c99-9d3b-5a9dbaf4b18c.png)
 
 Now I want to make this dynamic so that any user can use this and add any functionality. Then environment variable comes into picture.
 
-![](media/2dc35ba6e96cbf7f0b3c96721cbb9a05.png)
+![image](https://user-images.githubusercontent.com/106816732/213420543-a56d99d8-990d-442c-928a-f5d850a639c5.png)
 
 Build the new image
 
-![](media/a01c5a1509589bcf8b1e0e933e5ef26e.png)
+![image](https://user-images.githubusercontent.com/106816732/213420555-d1e00883-5317-45be-8a77-74d7e295d6c1.png)
 
 Run the image with dynamic variables
 
-![](media/100d8d4c0449cd833b983af5ef71ea7a.png)
+![image](https://user-images.githubusercontent.com/106816732/213420580-d8cb2db0-fd25-4d79-9346-3631475ba12d.png)
 
 **How to inspect all the environment variables**
 
 Running the image with dynamic variables
 
-**![](media/b1aa65c69f2fe5a5a5b7a8c5d3479bb4.png)**
+![image](https://user-images.githubusercontent.com/106816732/213420604-cd6854a2-bdc0-458c-a014-f7151a426f80.png)
 
 **‘docker ps’** will show the running containers. Do the docker inspect which will show all the env variables in the particular image.
 
-**![](media/973c563b535245c568e6f4f26d459d52.png)**
+![image](https://user-images.githubusercontent.com/106816732/213420631-8559fce6-52d8-4db2-ad50-4b3eade0d87d.png)
 
-**![](media/5b818b9e16c9bb05c5606eb51658da51.png)**
+![image](https://user-images.githubusercontent.com/106816732/213420665-de130eaa-6db3-4fb5-a5c9-8f3822de2c38.png)
 
 **We can create a specific file for all the environment variables as well. Which is the common practice. The file name would be .env**
 
-**![](media/f01cdc97f72afca09415c3539c1d3e12.png)**
+![image](https://user-images.githubusercontent.com/106816732/213420704-3301a186-b6f4-481a-8e04-249866ce7be0.png)
 
-**![](media/654a7538189945b8ab5d59c0931d3e84.png)**
+![image](https://user-images.githubusercontent.com/106816732/213420726-b8ae9636-abcb-4117-8624-9aa8c64b652a.png)
 
 **Commands and Entry points**
 
-**![](media/cb6363c34b36725cf6c0be732a70a34e.png)**
-
+![image](https://user-images.githubusercontent.com/106816732/213420803-e00dee1e-d431-4eb2-8b93-e718375671d8.png)
 We can write this in Dockerfile as well.
 
 **Docker Compose**
@@ -279,4 +278,4 @@ Docker compose is a tool that was developed to help define and share multi-conta
 
 Say we have 4 containers for Flask app, mongoDb, ansible and Jenkins. We will make containers up using separate docker run \<image name\> command. Using docker compose, using single YAML file we can bring all these up at once.
 
-![](media/9533ac1aefe09693d00af5458f93686a.png)
+![image](https://user-images.githubusercontent.com/106816732/213420856-ab08aaaa-073e-437e-9527-6935175322d7.png)
